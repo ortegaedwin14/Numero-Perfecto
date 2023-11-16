@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author orteg
  */
 public class NumeroPerfecto extends javax.swing.JFrame {
-    boolean esPrimo;
+    public boolean perfecto,esPrimo;
     /**
      * Creates new form NumeroPerfecto
      */
@@ -115,42 +115,25 @@ public class NumeroPerfecto extends javax.swing.JFrame {
 
         int numero = Integer.parseInt(txtNumero.getText());
 
-        int i, suma = 0;
-      
-        for (i = 1; i < numero; i++) {                            
-            if (numero % i == 0) {
-                suma = suma + i;   
+        numeroPerfecto(numero);
+        esPrimo(numero);
+        if(esPrimo==true){
+            
+            for (int i = 0; i < 10; i++) {
+                
             }
+            
+            ArrayList <Integer> ListaPrimos = new ArrayList<>(numero);
+            ListaPrimos.add(numero);
         }
-        if (suma == numero) {                       
-            lblMensaje.setText("Es Perfecto");
-        } else {
-           lblMensaje.setText("No es perfecto");
-
-        }
-        txtNumero.setText("");
-        
+            
     }//GEN-LAST:event_btnComprobarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     
         int numero = Integer.parseInt(txtNumero.getText());
         
-        if (numero % 2 ==0|| numero==2){
-            lblPrimo.setText("no es primo");
-        }
-        else if (numero % 2 ==1){
-            lblPrimo.setText("Es primo");
-            
-             esPrimo = true;
-
-        }
-        if (esPrimo==true){
-             for (int i = 2; i < numero; i++) {
-  
-                
-            }
-        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -186,6 +169,38 @@ public class NumeroPerfecto extends javax.swing.JFrame {
                 new NumeroPerfecto().setVisible(true);
             }
         });
+    }
+    public void numeroPerfecto(int numero){
+            int i, suma = 0;
+      
+        for (i = 1; i < numero; i++) {                            
+            if (numero % i == 0) {
+                suma = suma + i;   
+            }
+        }
+        if (suma == numero) {  
+            perfecto = true;
+            lblMensaje.setText("Es Perfecto");
+        } else {
+            
+           lblMensaje.setText("No es perfecto");
+           perfecto = false;
+
+        }
+        txtNumero.setText("");    
+    }
+    public void esPrimo(int numero){
+                
+        if (numero % 2 ==0|| numero==2){
+            lblPrimo.setText("no es primo");
+            
+        }
+        else if (numero % 2 ==1){
+            lblPrimo.setText("Es primo");
+            
+             esPrimo = true;
+
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
